@@ -67,6 +67,7 @@
              NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
              
              
+             
              //NSLog(@"task=%@, response = %@ %@", operation, [responseObject class], str);
              
              // NSData に変換する
