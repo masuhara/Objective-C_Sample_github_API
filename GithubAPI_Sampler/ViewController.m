@@ -11,15 +11,20 @@
 #import "UAGithubEngine.h"
 #import "AFNetworking.h"
 #import "SVGKit.h"
-
+#import "UIImage+SVG.h"
+#import "ContributionTableViewCell.h"
 
 @interface ViewController ()
+<UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end
 
 @implementation ViewController
 {
-    IBOutlet UIWebView *webView;
+    IBOutlet UITableView *feedTableView;
+    
+    NSMutableArray *profileImageArray;
+    NSMutableArray *contributionWebViewArray;
 }
 
 
@@ -28,6 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    feedTableView.delegate = self;
+    feedTableView.dataSource = self;
+    
+    profileImageArray = [[NSMutableArray alloc] init];
+    contributionWebViewArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,9 +56,6 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSString *userName = @"masuhara";
-    /*
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-     */
     
     // text/htmlエラー対策
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -57,59 +64,47 @@
     [manager GET:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", userName]
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
              
+             [contributionWebViewArray addObject:string];
+
              
-             [webView loadData:responseObject MIMEType:@"image/svg+xml"  textEncodingName:@"utf-8"  baseURL:nil];
-             webView.opaque = NO;
-             webView.backgroundColor = [UIColor redColor];
-             //[webView reload];
-             
-             NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-             
-             
-             
-             //NSLog(@"task=%@, response = %@ %@", operation, [responseObject class], str);
-             
-             // NSData に変換する
-             //NSData *jsonData = [str dataUsingEncoding:NSUnicodeStringEncoding];
-            
-             NSLog(@"%@", str.description);
-             
-             // JSON のオブジェクトは NSDictionary に変換されている
-             /*
-             NSMutableArray *results = [[NSMutableArray alloc] init];
-             for (NSDictionary *obj in array)
-             {
-                 [results addObject:[obj objectForKey:@"fill"]];
-                 
-             }
-              */
-             
-             
+             NSLog(@"contriArray == %@", contributionWebViewArray);
+
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              // エラーの場合はエラーの内容をコンソールに出力する
              NSLog(@"Error: %@", error.description);
          }];
     
-    
-    
-    /*
-    UAGithubEngine *engine = [[UAGithubEngine alloc] initWithUsername:USER_NAME password:PASSWORD withReachability:YES];
-    
-    [engine repositoriesWithSuccess:^(id response) {
-        NSLog(@"Got an array of repos: %@", response);
-    } failure:^(NSError *error) {
-        NSLog(@"Oops: %@", error);
-    }];
-    
-    [engine user:@"this_guy" isCollaboratorForRepository:@"UAGithubEngine" success:^(BOOL collaborates) {
-        NSLog(@"%d", collaborates);
-    } failure:^(NSError *error){
-        NSLog(@"D'oh: %@", error);
-    }];
-     */
+    [feedTableView reloadData];
 }
+
+
+#pragma mark - TableView DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return contributionWebViewArray.count;
+}
+
+#pragma mark - TableView Delegate
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ContributionTableViewCell *cell = (ContributionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    //MARK:profile Image
+    UIImageView *profileImageView = (UIImageView *)[cell viewWithTag:1];
+    profileImageView.image = 
+    
+    //MARK:contribution webView
+    UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
+    [webView loadHTMLString:contributionWebViewArray[indexPath.row] baseURL:nil];
+    webView.delegate = self;
+    webView.scalesPageToFit = YES;
+    
+    return cell;
+}
+
 
 
 

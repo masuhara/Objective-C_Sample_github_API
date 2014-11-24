@@ -148,6 +148,11 @@
 		AF9773521A1FE31E008D13AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9773511A1FE31E008D13AA /* QuartzCore.framework */; };
 		AF9773541A1FE327008D13AA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9773531A1FE327008D13AA /* libxml2.2.dylib */; };
 		AF9773561A1FE9F0008D13AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9773551A1FE9F0008D13AA /* CoreGraphics.framework */; };
+		AFAB999E1A228FE6000EE1B9 /* PocketSVG.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB99991A228FE6000EE1B9 /* PocketSVG.m */; };
+		AFAB999F1A228FE6000EE1B9 /* SVGImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB999B1A228FE6000EE1B9 /* SVGImageCache.m */; };
+		AFAB99A01A228FE6000EE1B9 /* UIImage+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB999D1A228FE6000EE1B9 /* UIImage+SVG.m */; };
+		AFAB99A51A22948C000EE1B9 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB99A41A22948C000EE1B9 /* RXMLElement.m */; };
+		AFAB99A81A22A996000EE1B9 /* ContributionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -466,6 +471,17 @@
 		AF9773511A1FE31E008D13AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AF9773531A1FE327008D13AA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		AF9773551A1FE9F0008D13AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AFAB99981A228FE6000EE1B9 /* PocketSVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketSVG.h; sourceTree = "<group>"; };
+		AFAB99991A228FE6000EE1B9 /* PocketSVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketSVG.m; sourceTree = "<group>"; };
+		AFAB999A1A228FE6000EE1B9 /* SVGImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGImageCache.h; sourceTree = "<group>"; };
+		AFAB999B1A228FE6000EE1B9 /* SVGImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGImageCache.m; sourceTree = "<group>"; };
+		AFAB999C1A228FE6000EE1B9 /* UIImage+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SVG.h"; sourceTree = "<group>"; };
+		AFAB999D1A228FE6000EE1B9 /* UIImage+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SVG.m"; sourceTree = "<group>"; };
+		AFAB99A21A22948C000EE1B9 /* Library-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Library-Prefix.pch"; sourceTree = "<group>"; };
+		AFAB99A31A22948C000EE1B9 /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
+		AFAB99A41A22948C000EE1B9 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
+		AFAB99A61A22A996000EE1B9 /* ContributionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContributionTableViewCell.h; sourceTree = "<group>"; };
+		AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContributionTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,9 +508,6 @@
 		AF9770A81A1F77CE008D13AA = {
 			isa = PBXGroup;
 			children = (
-				AF9773551A1FE9F0008D13AA /* CoreGraphics.framework */,
-				AF9773531A1FE327008D13AA /* libxml2.2.dylib */,
-				AF9773511A1FE31E008D13AA /* QuartzCore.framework */,
 				AF9770B31A1F77CE008D13AA /* GithubAPI_Sampler */,
 				AF9770CD1A1F77CE008D13AA /* GithubAPI_SamplerTests */,
 				AF9770B21A1F77CE008D13AA /* Products */,
@@ -513,15 +526,16 @@
 		AF9770B31A1F77CE008D13AA /* GithubAPI_Sampler */ = {
 			isa = PBXGroup;
 			children = (
-				AF9771DF1A1FE22E008D13AA /* Source */,
-				AF9771C11A1FCC4D008D13AA /* AFNetworking */,
-				AF97719B1A1FCA04008D13AA /* UAGithubEngine */,
+				AFAB99AA1A22F5D5000EE1B9 /* Images */,
+				AFAB99A91A22EE1C000EE1B9 /* Libraries */,
 				AF9770B81A1F77CE008D13AA /* AppDelegate.h */,
 				AF9770B91A1F77CE008D13AA /* AppDelegate.m */,
 				AF9771131A1F7AF4008D13AA /* OAuthConstManager.h */,
 				AF9771141A1F7AF4008D13AA /* OAuthConstManager.m */,
 				AF9770BB1A1F77CE008D13AA /* ViewController.h */,
 				AF9770BC1A1F77CE008D13AA /* ViewController.m */,
+				AFAB99A61A22A996000EE1B9 /* ContributionTableViewCell.h */,
+				AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */,
 				AF9770BE1A1F77CE008D13AA /* Main.storyboard */,
 				AF9770C11A1F77CE008D13AA /* Images.xcassets */,
 				AF9770C31A1F77CE008D13AA /* LaunchScreen.xib */,
@@ -533,6 +547,9 @@
 		AF9770B41A1F77CE008D13AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF9773551A1FE9F0008D13AA /* CoreGraphics.framework */,
+				AF9773511A1FE31E008D13AA /* QuartzCore.framework */,
+				AF9773531A1FE327008D13AA /* libxml2.2.dylib */,
 				AF9771161A1FBA19008D13AA /* Default-568h@2x.png */,
 				AF9770B51A1F77CE008D13AA /* Info.plist */,
 				AF9770B61A1F77CE008D13AA /* main.m */,
@@ -976,6 +993,48 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AFAB99971A228FE6000EE1B9 /* UIImage-SVG */ = {
+			isa = PBXGroup;
+			children = (
+				AFAB99A11A22948C000EE1B9 /* RaptureXML */,
+				AFAB99981A228FE6000EE1B9 /* PocketSVG.h */,
+				AFAB99991A228FE6000EE1B9 /* PocketSVG.m */,
+				AFAB999A1A228FE6000EE1B9 /* SVGImageCache.h */,
+				AFAB999B1A228FE6000EE1B9 /* SVGImageCache.m */,
+				AFAB999C1A228FE6000EE1B9 /* UIImage+SVG.h */,
+				AFAB999D1A228FE6000EE1B9 /* UIImage+SVG.m */,
+			);
+			path = "UIImage-SVG";
+			sourceTree = "<group>";
+		};
+		AFAB99A11A22948C000EE1B9 /* RaptureXML */ = {
+			isa = PBXGroup;
+			children = (
+				AFAB99A21A22948C000EE1B9 /* Library-Prefix.pch */,
+				AFAB99A31A22948C000EE1B9 /* RXMLElement.h */,
+				AFAB99A41A22948C000EE1B9 /* RXMLElement.m */,
+			);
+			path = RaptureXML;
+			sourceTree = "<group>";
+		};
+		AFAB99A91A22EE1C000EE1B9 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				AFAB99971A228FE6000EE1B9 /* UIImage-SVG */,
+				AF9771DF1A1FE22E008D13AA /* Source */,
+				AF9771C11A1FCC4D008D13AA /* AFNetworking */,
+				AF97719B1A1FCA04008D13AA /* UAGithubEngine */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		AFAB99AA1A22F5D5000EE1B9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1116,6 +1175,7 @@
 				AF9773031A1FE22F008D13AA /* SVGGElement.m in Sources */,
 				AF97732D1A1FE22F008D13AA /* SVGKPointsAndPathsParser.m in Sources */,
 				AF9773451A1FE22F008D13AA /* DDAbstractDatabaseLogger.m in Sources */,
+				AFAB99A01A228FE6000EE1B9 /* UIImage+SVG.m in Sources */,
 				AF9772EB1A1FE22F008D13AA /* CSSStyleSheet.m in Sources */,
 				AF9771D61A1FCC4D008D13AA /* AFHTTPRequestOperationManager.m in Sources */,
 				AF97734A1A1FE22F008D13AA /* ContextFilterLogFormatter.m in Sources */,
@@ -1157,6 +1217,7 @@
 				AF97732F1A1FE22F008D13AA /* CALayerWithChildHitTest.m in Sources */,
 				AF9772F91A1FE22F008D13AA /* StyleSheet.m in Sources */,
 				AF9773021A1FE22F008D13AA /* SVGElementInstanceList.m in Sources */,
+				AFAB999F1A228FE6000EE1B9 /* SVGImageCache.m in Sources */,
 				AF9773041A1FE22F008D13AA /* SVGHelperUtilities.m in Sources */,
 				AF9772E41A1FE22F008D13AA /* CharacterData.m in Sources */,
 				AF9771B91A1FCA04008D13AA /* NSString+UAGithubEngineUtilities.m in Sources */,
@@ -1179,10 +1240,12 @@
 				AF9773101A1FE22F008D13AA /* SVGDescriptionElement.m in Sources */,
 				AF9773161A1FE22F008D13AA /* SVGImageElement.m in Sources */,
 				AF9772E81A1FE22F008D13AA /* CSSRuleList.m in Sources */,
+				AFAB99A81A22A996000EE1B9 /* ContributionTableViewCell.m in Sources */,
 				AF9773371A1FE22F008D13AA /* SVGKSourceNSData.m in Sources */,
 				AF9771B61A1FCA04008D13AA /* NSArray+Utilities.m in Sources */,
 				AF97731C1A1FE22F008D13AA /* SVGStyleElement.m in Sources */,
 				AF97731D1A1FE22F008D13AA /* SVGSVGElement.m in Sources */,
+				AFAB99A51A22948C000EE1B9 /* RXMLElement.m in Sources */,
 				AF9773301A1FE22F008D13AA /* CALayerWithClipRender.m in Sources */,
 				AF97730F1A1FE22F008D13AA /* SVGCircleElement.m in Sources */,
 				AF9773401A1FE22F008D13AA /* SVGKFastImageView.m in Sources */,
@@ -1209,6 +1272,7 @@
 				AF9772F31A1FE22F008D13AA /* EntityReference.m in Sources */,
 				AF9773481A1FE22F008D13AA /* DDLog.m in Sources */,
 				AF9773211A1FE22F008D13AA /* CALayerExporter.m in Sources */,
+				AFAB999E1A228FE6000EE1B9 /* PocketSVG.m in Sources */,
 				AF9772E71A1FE22F008D13AA /* CSSRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
