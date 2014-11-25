@@ -46,32 +46,35 @@
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juP-1v-uU9">
                                                     <rect key="frame" x="10" y="8" width="50" height="50"/>
                                                 </imageView>
-                                                <webView tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecb-eK-TJN">
-                                                    <rect key="frame" x="10" y="66" width="300" height="46"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </webView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最終更新日 : 2014/07/21/17:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bir-rA-63r">
-                                                    <rect key="frame" x="68" y="37" width="240" height="21"/>
+                                                    <rect key="frame" x="66" y="91" width="240" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="masuhara" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-22-aYJ">
-                                                    <rect key="frame" x="68" y="8" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@masuhara" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-22-aYJ">
+                                                    <rect key="frame" x="18" y="66" width="100" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200 Commits" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IG-hz-PRd">
-                                                    <rect key="frame" x="176" y="8" width="130" height="21"/>
+                                                    <rect key="frame" x="168" y="62" width="130" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HcH-GS-KnY">
+                                                    <rect key="frame" x="66" y="8" width="244" height="50"/>
+                                                </imageView>
+                                                <webView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXx-zT-UtK">
+                                                    <rect key="frame" x="66" y="8" width="244" height="50"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </webView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contributionView" destination="ecb-eK-TJN" id="Hvi-Zx-wo2"/>
+                                            <outlet property="contributionView" destination="bXx-zT-UtK" id="Qym-Hf-5pn"/>
                                             <outlet property="profileImageView" destination="juP-1v-uU9" id="FM2-f8-2Hm"/>
                                         </connections>
                                     </tableViewCell>
@@ -83,7 +86,7 @@
                     <navigationItem key="navigationItem" id="vI5-CI-Yvr">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QJT-wi-jVh">
                             <connections>
-                                <action selector="login" destination="vXZ-lx-hvc" id="PHQ-Hw-agD"/>
+                                <action selector="reloadData" destination="vXZ-lx-hvc" id="XSW-Gh-ZYb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

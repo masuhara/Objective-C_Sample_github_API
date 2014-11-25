@@ -25,6 +25,11 @@
     profileImageView.image = image;
 }
 
+//- (void)setContributionView:(UIImageView *)imageView
+//{
+//    contributionView = imageView;
+//}
+
 - (void)setContributionView:(UIWebView *)webView
 {
     contributionView = webView;
