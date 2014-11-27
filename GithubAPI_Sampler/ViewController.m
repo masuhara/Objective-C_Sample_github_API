@@ -37,12 +37,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    
     feedTableView.delegate = self;
     feedTableView.dataSource = self;
     
     profileImageArray = [NSMutableArray new];
     contributionWebViewArray = [NSMutableArray new];
     userNameArray = [NSMutableArray new];
+    
     
 }
 
@@ -170,9 +173,11 @@
     [profileImageView addSubview:activityIndicator];
     [activityIndicator startAnimating];
     
+    
     //MARK:ContributionView
     /*
     UIImageView *contributionView = (UIImageView *)[cell viewWithTag:5];
+
     [contributionView sd_setImageWithURL:[NSURL URLWithString:svgStrings[indexPath.row]]
                         placeholderImage:nil
                                  options:SDWebImageCacheMemoryOnly
@@ -182,7 +187,7 @@
                                }];
     [contributionView addSubview:activityIndicator];
     [activityIndicator startAnimating];
-     */
+    */
     
     //[YLGIFImage imageNamed:@"loading.gif"]
     /*
@@ -197,13 +202,12 @@
     });
      */
     
-    
     //MARK:contribution webView
-    
     UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
     [webView loadHTMLString:svgStrings[indexPath.row] baseURL:nil];
     webView.delegate = self;
     webView.scalesPageToFit = YES;
+    
     
     return cell;
 }

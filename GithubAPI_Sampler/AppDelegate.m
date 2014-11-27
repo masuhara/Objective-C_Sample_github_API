@@ -7,16 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "GADBannerView.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+{
+    GADBannerView *_gadBannerView;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    [self getTabBarWithAdMob];
     return YES;
 }
 
@@ -40,6 +47,37 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)getTabBarWithAdMob
+{
+    // *UITabBarControllerを取得する
+    UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
+    
+    _gadBannerView = [[GADBannerView alloc]
+                      initWithFrame:CGRectMake(0.0,
+                                               tabBarController.view.frame.size.height -
+                                               GAD_SIZE_320x50.height - 49,
+                                               GAD_SIZE_320x50.width,
+                                               GAD_SIZE_320x50.height)];
+    
+    _gadBannerView.adUnitID = @"ca-app-pub-6363351251362748/2672447116";
+    _gadBannerView.rootViewController = tabBarController;
+    [tabBarController.view addSubview:_gadBannerView];
+    
+    [_gadBannerView loadRequest:[GADRequest request]];
+    
+    
+    // 開発段階では必ずテスト モードを使用
+    // ---- AdMob test --->
+    GADRequest *request = [GADRequest request];
+    
+    request.testDevices = [NSArray arrayWithObjects:
+                           // シミュレータ
+                           GAD_SIMULATOR_ID,
+                           // iOS 端末をテスト: TEST_DEVICE_ID
+                           @"c??????????????????????????????6",
+                           nil];
 }
 
 @end
