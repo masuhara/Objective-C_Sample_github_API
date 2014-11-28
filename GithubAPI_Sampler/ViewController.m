@@ -52,6 +52,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
+    UIApplication *application = [UIApplication sharedApplication];
+    application.networkActivityIndicatorVisible = YES;
     [self loadData];
 }
 
@@ -128,8 +130,7 @@
                      [feedTableView reloadData];
                  });
                  
-             }
-             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                  
                  NSLog(@"Error: %@", error.description);
              }];
@@ -152,65 +153,64 @@
     if (cell == nil)
     {
         cell = [[ContributionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:reuseID];
+                                                reuseIdentifier:reuseID];
     }
     
     //MARK:profile Image
     UIImageView *profileImageView = (UIImageView *)[cell viewWithTag:1];
     NSString *imageURL = @"https://avatars.githubusercontent.com/u/1835427?v=3";
     
-    __block UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activityIndicator.center = profileImageView.center;
-    activityIndicator.hidesWhenStopped = YES;
-    
     [profileImageView sd_setImageWithURL:[NSURL URLWithString:imageURL]
-                      placeholderImage:nil
+                        placeholderImage:[UIImage imageNamed:@"grabatar@2x.png"]
                                options:SDWebImageCacheMemoryOnly
                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                 NSLog(@"読み込み完了");
-                                 [activityIndicator removeFromSuperview];
+                                 
+                                 UIApplication *application = [UIApplication sharedApplication];
+                                 application.networkActivityIndicatorVisible = NO;
+                                 
                              }];
-    [profileImageView addSubview:activityIndicator];
-    [activityIndicator startAnimating];
+
+    //MARK:fix reuse cell Problem
+    //MARK:contribution webView
+    UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
+    webView.delegate = self;
+    webView.scalesPageToFit = YES;
+    [webView loadHTMLString:svgStrings[indexPath.row] baseURL:nil];
     
     
     //MARK:ContributionView
     /*
-    UIImageView *contributionView = (UIImageView *)[cell viewWithTag:5];
-
-    [contributionView sd_setImageWithURL:[NSURL URLWithString:svgStrings[indexPath.row]]
-                        placeholderImage:nil
-                                 options:SDWebImageCacheMemoryOnly
-                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                   NSLog(@"読み込み完了");
-                                   [activityIndicator removeFromSuperview];
-                               }];
-    [contributionView addSubview:activityIndicator];
-    [activityIndicator startAnimating];
-    */
+     UIImageView *contributionView = (UIImageView *)[cell viewWithTag:5];
+     
+     [contributionView sd_setImageWithURL:[NSURL URLWithString:svgStrings[indexPath.row]]
+     placeholderImage:nil
+     options:SDWebImageCacheMemoryOnly
+     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+     NSLog(@"読み込み完了");
+     [activityIndicator removeFromSuperview];
+     }];
+     [contributionView addSubview:activityIndicator];
+     [activityIndicator startAnimating];
+     */
     
     //[YLGIFImage imageNamed:@"loading.gif"]
     /*
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
-        dispatch_async(q_main, ^{
-            profileImageView.image = image;
-            [cell layoutSubviews];
-        });
-    });
+     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+     dispatch_queue_t q_main = dispatch_get_main_queue();
+     dispatch_async(q_global, ^{
+     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
+     dispatch_async(q_main, ^{
+     profileImageView.image = image;
+     [cell layoutSubviews];
+     });
+     });
      */
-    
-    //MARK:contribution webView
-    UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
-    [webView loadHTMLString:svgStrings[indexPath.row] baseURL:nil];
-    webView.delegate = self;
-    webView.scalesPageToFit = YES;
     
     
     return cell;
 }
+
+
 
 
 #pragma mark - TableView Delegate

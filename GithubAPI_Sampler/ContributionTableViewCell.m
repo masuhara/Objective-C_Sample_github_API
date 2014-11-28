@@ -8,6 +8,7 @@
 
 #import "ContributionTableViewCell.h"
 
+
 @implementation ContributionTableViewCell
 
 - (void)awakeFromNib {
@@ -39,5 +40,7 @@
 {
     nameLabel.text = text;
 }
+
+
 
 @end

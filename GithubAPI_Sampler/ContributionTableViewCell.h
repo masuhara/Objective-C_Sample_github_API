@@ -16,6 +16,7 @@
     __weak IBOutlet UIWebView *contributionView;
 }
 
+
 - (void)setProfileImage:(UIImage *)image;
 //- (void)setContributionView:(UIImageView *)contributionView;
 - (void)setContributionView:(UIWebView *)contributionView;
