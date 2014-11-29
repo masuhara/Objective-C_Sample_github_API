@@ -323,7 +323,6 @@
 		AF9770B31A1F77CE008D13AA /* GithubAPI_Sampler */ = {
 			isa = PBXGroup;
 			children = (
-				AF9D8BE11A2700310002B38F /* PocketSVG */,
 				AF7180CF1A25A20F00C7FFA1 /* AdMob */,
 				AFAB99AA1A22F5D5000EE1B9 /* Images */,
 				AFAB99A91A22EE1C000EE1B9 /* Libraries */,
@@ -422,6 +421,7 @@
 		AFAB99A91A22EE1C000EE1B9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AF9D8BE11A2700310002B38F /* PocketSVG */,
 				AF7180BE1A24672F00C7FFA1 /* YLGIFImage */,
 				AF5FFF481A245E6F00E2A08F /* SDWebImage */,
 				AF9771C11A1FCC4D008D13AA /* AFNetworking */,

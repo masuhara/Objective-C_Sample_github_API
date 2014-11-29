@@ -13,7 +13,6 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "YLGIFImage.h"
 
-#define ONCE_READ_COUNT 4
 
 @interface ViewController ()
 <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -82,14 +81,12 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     numberOfFollowings = [self getFolloingInfo:manager withUserName:userName];
-    
-    
 }
 
 - (int)getFolloingInfo:(AFHTTPRequestOperationManager *)manager withUserName:(NSString *)userName
 {
     
-    [manager GET:@"https://api.github.com/users/masuhara/following"
+    [manager GET:@"https://api.github.com/users/masuhara/following?page=1&per_page=100'"
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
