@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="1Le-ia-Nhd"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Settings" image="setting.png" id="1Le-ia-Nhd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAI-Ub-YdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="favorite" id="wuA-VK-Hvw"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="favorite" image="favorite.png" id="wuA-VK-Hvw"/>
                     <connections>
                         <outlet property="imageView" destination="35V-S5-aYp" id="t1j-s4-E2R"/>
                     </connections>
@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="-819" y="312"/>
         </scene>
-        <!--Timeline-->
+        <!--timeline-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -111,30 +111,36 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juP-1v-uU9">
-                                                    <rect key="frame" x="10" y="8" width="50" height="50"/>
+                                                    <rect key="frame" x="14" y="8" width="55" height="55"/>
                                                 </imageView>
+                                                <webView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqA-6p-5K5">
+                                                    <rect key="frame" x="77" y="8" width="320" height="200"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </webView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最終更新日 : 2014/07/21/17:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bir-rA-63r">
                                                     <rect key="frame" x="66" y="91" width="240" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@masuhara" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-22-aYJ">
-                                                    <rect key="frame" x="18" y="66" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200 commits" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IG-hz-PRd">
+                                                    <rect key="frame" x="176" y="66" width="130" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200 Commits" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IG-hz-PRd">
-                                                    <rect key="frame" x="168" y="62" width="130" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWB-c2-auh">
+                                                    <rect key="frame" x="8" y="66" width="25" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <webView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqA-6p-5K5">
-                                                    <rect key="frame" x="66" y="8" width="244" height="50"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </webView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-22-aYJ">
+                                                    <rect key="frame" x="27" y="66" width="150" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -148,23 +154,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="timeline" id="1BA-pc-cZP"/>
-                    <navigationItem key="navigationItem" title="Timeline" id="vI5-CI-Yvr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QJT-wi-jVh">
-                            <connections>
-                                <action selector="reloadData" destination="vXZ-lx-hvc" id="XSW-Gh-ZYb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="timeline" image="octocat.png" id="1BA-pc-cZP"/>
+                    <navigationItem key="navigationItem" id="vI5-CI-Yvr"/>
                     <connections>
                         <outlet property="feedTableView" destination="eWu-qc-sG9" id="4Ed-B7-WXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="-186"/>
+            <point key="canvasLocation" x="48" y="-187"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite.png" width="25" height="22"/>
+        <image name="octocat.png" width="23" height="23"/>
+        <image name="setting.png" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

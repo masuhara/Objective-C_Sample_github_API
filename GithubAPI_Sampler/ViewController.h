@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ImageIO/ImageIO.h>
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController : UIViewController
 

@@ -24,6 +24,7 @@
     IBOutlet UITableView *feedTableView;
     NSMutableArray *userNameArray;
     NSMutableArray *profileImageArray;
+    NSMutableArray *lastUpdatedArray;
     NSMutableArray *contributionWebViewArray;
     NSString *svgStrings[9999];
     
@@ -42,18 +43,22 @@
     feedTableView.dataSource = self;
     
     profileImageArray = [NSMutableArray new];
-    contributionWebViewArray = [NSMutableArray new];
     userNameArray = [NSMutableArray new];
+    lastUpdatedArray = [NSMutableArray new];
+    contributionWebViewArray = [NSMutableArray new];
     
     
+    self.navigationItem.title = @"hoge";
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    application.networkActivityIndicatorVisible = YES;
+    [self loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    UIApplication *application = [UIApplication sharedApplication];
-    application.networkActivityIndicatorVisible = YES;
-    [self loadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,12 +86,14 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     numberOfFollowings = [self getFolloingInfo:manager withUserName:userName];
+    
 }
+
 
 - (int)getFolloingInfo:(AFHTTPRequestOperationManager *)manager withUserName:(NSString *)userName
 {
     
-    [manager GET:@"https://api.github.com/users/masuhara/following?page=1&per_page=100'"
+    [manager GET:@"https://api.github.com/users/masuhara/following?page=1&per_page=100"
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
@@ -95,9 +102,9 @@
                                                                 error:nil];
              numberOfFollowings = (int)array.count;
              
-             
              for (NSDictionary *dic in array) {
                  [userNameArray addObject:[dic valueForKey:@"login"]];
+                 [profileImageArray addObject:[dic valueForKey:@"avatar_url"]];
              }
              
              [self getContributionGraph:manager];
@@ -110,6 +117,8 @@
     
     return numberOfFollowings;
 }
+
+
 
 - (void)getContributionGraph:(AFHTTPRequestOperationManager *)manager
 {
@@ -152,12 +161,13 @@
         cell = [[ContributionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                 reuseIdentifier:reuseID];
     }
-    
-    //MARK:profile Image
+
+    //MARK:profile Image TAG=1
     UIImageView *profileImageView = (UIImageView *)[cell viewWithTag:1];
-    NSString *imageURL = @"https://avatars.githubusercontent.com/u/1835427?v=3";
+    profileImageView.layer.cornerRadius = 5.0f;
+    profileImageView.clipsToBounds = YES;
     
-    [profileImageView sd_setImageWithURL:[NSURL URLWithString:imageURL]
+    [profileImageView sd_setImageWithURL:profileImageArray[indexPath.row]
                         placeholderImage:[UIImage imageNamed:@"grabatar@2x.png"]
                                options:SDWebImageCacheMemoryOnly
                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -165,14 +175,36 @@
                                  UIApplication *application = [UIApplication sharedApplication];
                                  application.networkActivityIndicatorVisible = NO;
                                  
+                                 // Fade Animation
+                                 [UIView transitionWithView:profileImageView
+                                                   duration:0.3f
+                                                    options:UIViewAnimationOptionTransitionCrossDissolve
+                                                 animations:^{
+                                                     profileImageView.image = image;
+                                                 } completion:nil];
+                                 
                              }];
+    
+    //MARK:User Name TAG=2
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
+    nameLabel.text = userNameArray[indexPath.row];
+    
+    //MARK:Updated Date TAG=3
+    //UILabel *lastUpdatedLabel = (UILabel *)[cell viewWithTag:3];
+    //lastUpdatedLabel.text = lastUpdatedArray[indexPath.row];
+    
 
     //MARK:fix reuse cell Problem
     //MARK:contribution webView
     UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
+    // not clear without these 2 lines
+    webView.backgroundColor = [UIColor clearColor];
+    webView.opaque = NO;
+    
     webView.delegate = self;
     webView.scalesPageToFit = YES;
     [webView loadHTMLString:svgStrings[indexPath.row] baseURL:nil];
+    
     
     
     //MARK:ContributionView

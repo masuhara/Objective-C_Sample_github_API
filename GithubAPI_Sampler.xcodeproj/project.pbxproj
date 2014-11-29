@@ -60,6 +60,11 @@
 		AF9773561A1FE9F0008D13AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9773551A1FE9F0008D13AA /* CoreGraphics.framework */; };
 		AF9B39E81A28624600C926A9 /* grabatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39E71A28624600C926A9 /* grabatar@2x.png */; };
 		AF9B39EA1A28624D00C926A9 /* grabatar_bg_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39E91A28624D00C926A9 /* grabatar_bg_clear@2x.png */; };
+		AF9B39EC1A29B0AB00C926A9 /* octocat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39EB1A29B0AB00C926A9 /* octocat@2x.png */; };
+		AF9B39EF1A29B0EB00C926A9 /* favorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39ED1A29B0EB00C926A9 /* favorite@2x.png */; };
+		AF9B39F01A29B0EB00C926A9 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39EE1A29B0EB00C926A9 /* setting@2x.png */; };
+		AF9B39FA1A29FAE300C926A9 /* octocat120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39F91A29FAE300C926A9 /* octocat120@2x.png */; };
+		AF9B39FC1A2A000300C926A9 /* gitmob_title_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39FB1A2A000300C926A9 /* gitmob_title_logo@2x.png */; };
 		AF9D8BE41A2700460002B38F /* PocketSVG.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D8BE31A2700460002B38F /* PocketSVG.m */; };
 		AF9D8BE71A2700900002B38F /* SVGTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D8BE61A2700900002B38F /* SVGTestViewController.m */; };
 		AFAB99A81A22A996000EE1B9 /* ContributionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */; };
@@ -180,6 +185,11 @@
 		AF9773551A1FE9F0008D13AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AF9B39E71A28624600C926A9 /* grabatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grabatar@2x.png"; sourceTree = "<group>"; };
 		AF9B39E91A28624D00C926A9 /* grabatar_bg_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grabatar_bg_clear@2x.png"; sourceTree = "<group>"; };
+		AF9B39EB1A29B0AB00C926A9 /* octocat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "octocat@2x.png"; sourceTree = "<group>"; };
+		AF9B39ED1A29B0EB00C926A9 /* favorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite@2x.png"; sourceTree = "<group>"; };
+		AF9B39EE1A29B0EB00C926A9 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
+		AF9B39F91A29FAE300C926A9 /* octocat120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "octocat120@2x.png"; sourceTree = "<group>"; };
+		AF9B39FB1A2A000300C926A9 /* gitmob_title_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gitmob_title_logo@2x.png"; sourceTree = "<group>"; };
 		AF9D8BE21A2700460002B38F /* PocketSVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketSVG.h; sourceTree = "<group>"; };
 		AF9D8BE31A2700460002B38F /* PocketSVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketSVG.m; sourceTree = "<group>"; };
 		AF9D8BE51A2700900002B38F /* SVGTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGTestViewController.h; sourceTree = "<group>"; };
@@ -432,6 +442,11 @@
 		AFAB99AA1A22F5D5000EE1B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AF9B39FB1A2A000300C926A9 /* gitmob_title_logo@2x.png */,
+				AF9B39F91A29FAE300C926A9 /* octocat120@2x.png */,
+				AF9B39ED1A29B0EB00C926A9 /* favorite@2x.png */,
+				AF9B39EE1A29B0EB00C926A9 /* setting@2x.png */,
+				AF9B39EB1A29B0AB00C926A9 /* octocat@2x.png */,
 				AF9B39E71A28624600C926A9 /* grabatar@2x.png */,
 				AF9B39E91A28624D00C926A9 /* grabatar_bg_clear@2x.png */,
 			);
@@ -518,13 +533,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9B39EC1A29B0AB00C926A9 /* octocat@2x.png in Resources */,
 				AF9B39EA1A28624D00C926A9 /* grabatar_bg_clear@2x.png in Resources */,
 				AF9770C01A1F77CE008D13AA /* Main.storyboard in Resources */,
 				AF9771171A1FBA19008D13AA /* Default-568h@2x.png in Resources */,
 				AF9B39E81A28624600C926A9 /* grabatar@2x.png in Resources */,
+				AF9B39FA1A29FAE300C926A9 /* octocat120@2x.png in Resources */,
+				AF9B39EF1A29B0EB00C926A9 /* favorite@2x.png in Resources */,
 				AF9770C51A1F77CE008D13AA /* LaunchScreen.xib in Resources */,
+				AF9B39FC1A2A000300C926A9 /* gitmob_title_logo@2x.png in Resources */,
 				AF9770C21A1F77CE008D13AA /* Images.xcassets in Resources */,
 				AF5FFF7B1A24617A00E2A08F /* loading.gif in Resources */,
+				AF9B39F01A29B0EB00C926A9 /* setting@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
