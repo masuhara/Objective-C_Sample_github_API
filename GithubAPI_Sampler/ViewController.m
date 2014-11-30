@@ -12,6 +12,7 @@
 #import "ContributionTableViewCell.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "YLGIFImage.h"
+#import "SvgToBezier.h"
 
 
 @interface ViewController ()
@@ -174,14 +175,17 @@
                                  
                                  UIApplication *application = [UIApplication sharedApplication];
                                  application.networkActivityIndicatorVisible = NO;
-                                 
-                                 // Fade Animation
-                                 [UIView transitionWithView:profileImageView
-                                                   duration:0.3f
-                                                    options:UIViewAnimationOptionTransitionCrossDissolve
-                                                 animations:^{
-                                                     profileImageView.image = image;
-                                                 } completion:nil];
+                                 // Cache Flag
+                                 if (cacheType != SDImageCacheTypeMemory) {
+                                     // Fade Animation
+                                     [UIView transitionWithView:profileImageView
+                                                       duration:0.3f
+                                                        options:UIViewAnimationOptionTransitionCrossDissolve
+                                                     animations:^{
+                                                         profileImageView.image = image;
+                                                     } completion:nil];
+                                     
+                                 }
                                  
                              }];
     
@@ -197,6 +201,7 @@
     //MARK:fix reuse cell Problem
     //MARK:contribution webView
     UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
+    
     // not clear without these 2 lines
     webView.backgroundColor = [UIColor clearColor];
     webView.opaque = NO;
@@ -243,6 +248,17 @@
 
 
 #pragma mark - TableView Delegate
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound)
+    {
+//        UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
+//        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    }
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [feedTableView deselectRowAtIndexPath:indexPath animated:YES];

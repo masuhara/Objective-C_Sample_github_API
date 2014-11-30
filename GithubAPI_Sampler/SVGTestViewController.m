@@ -9,6 +9,7 @@
 #import "SVGTestViewController.h"
 #import "PocketSVG.h"
 #import "AFNetworking.h"
+#import "SvgToBezier.h"
 
 @interface SVGTestViewController ()
 
@@ -40,29 +41,7 @@
              UIImage *resImage = [UIImage imageWithData:data];
              
              imageView.image = resImage;
-             
-             
-             
-             
-             // Renew UI on main Thread
-             /*
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [imageView setNeedsDisplay];
-                 
-                 //1: Turn your SVG into a CGPath:
-                 CGPathRef myPath = [PocketSVG pathFromSVGString:string];
-                 
-                 CAShapeLayer *myShapeLayer = [CAShapeLayer layer];
-                 myShapeLayer.path = myPath;
-                 
-                 myShapeLayer.strokeColor = [[UIColor redColor] CGColor];
-                 myShapeLayer.lineWidth = 4;
-                 myShapeLayer.fillColor = [[UIColor clearColor] CGColor];
-                 
-                 [self.view.layer addSublayer:myShapeLayer];
-                 
-             });
-             */
+
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
