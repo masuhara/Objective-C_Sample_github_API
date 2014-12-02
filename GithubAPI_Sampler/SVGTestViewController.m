@@ -9,7 +9,6 @@
 #import "SVGTestViewController.h"
 #import "PocketSVG.h"
 #import "AFNetworking.h"
-#import "SvgToBezier.h"
 
 @interface SVGTestViewController ()
 
@@ -47,7 +46,6 @@
              
              NSLog(@"Error: %@", error.description);
          }];
-    
 }
 
 - (void)didReceiveMemoryWarning {

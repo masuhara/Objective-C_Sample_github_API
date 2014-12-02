@@ -12,7 +12,6 @@
 #import "ContributionTableViewCell.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "YLGIFImage.h"
-#import "SvgToBezier.h"
 
 
 @interface ViewController ()
@@ -59,7 +58,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -186,7 +184,6 @@
                                                      } completion:nil];
                                      
                                  }
-                                 
                              }];
     
     //MARK:User Name TAG=2
@@ -197,9 +194,8 @@
     //UILabel *lastUpdatedLabel = (UILabel *)[cell viewWithTag:3];
     //lastUpdatedLabel.text = lastUpdatedArray[indexPath.row];
     
-
     //MARK:fix reuse cell Problem
-    //MARK:contribution webView
+    //MARK:contribution webView TAG=5
     UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
     
     // not clear without these 2 lines
@@ -210,53 +206,20 @@
     webView.scalesPageToFit = YES;
     [webView loadHTMLString:svgStrings[indexPath.row] baseURL:nil];
     
-    
-    
-    //MARK:ContributionView
-    /*
-     UIImageView *contributionView = (UIImageView *)[cell viewWithTag:5];
-     
-     [contributionView sd_setImageWithURL:[NSURL URLWithString:svgStrings[indexPath.row]]
-     placeholderImage:nil
-     options:SDWebImageCacheMemoryOnly
-     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-     NSLog(@"読み込み完了");
-     [activityIndicator removeFromSuperview];
-     }];
-     [contributionView addSubview:activityIndicator];
-     [activityIndicator startAnimating];
-     */
-    
-    //[YLGIFImage imageNamed:@"loading.gif"]
-    /*
-     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-     dispatch_queue_t q_main = dispatch_get_main_queue();
-     dispatch_async(q_global, ^{
-     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
-     dispatch_async(q_main, ^{
-     profileImageView.image = image;
-     [cell layoutSubviews];
-     });
-     });
-     */
-    
     return cell;
 }
 
-
-
-
 #pragma mark - TableView Delegate
-
+/*
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound)
     {
-//        UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
-//        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+        UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     }
 }
-
+*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -277,19 +240,6 @@
     }
 }
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

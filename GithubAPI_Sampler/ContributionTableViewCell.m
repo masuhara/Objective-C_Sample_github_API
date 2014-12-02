@@ -42,5 +42,10 @@
 }
 
 
+- (void)prepareForReuse
+{
+    UIWebView *webView = (UIWebView *)[super viewWithTag:5];
+    webView = nil;
+}
 
 @end
