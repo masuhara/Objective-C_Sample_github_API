@@ -9,6 +9,7 @@
 #import "SVGTestViewController.h"
 #import "PocketSVG.h"
 #import "AFNetworking.h"
+#import "SHXMLParser.h"
 
 @interface SVGTestViewController ()
 
@@ -34,15 +35,17 @@
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
-             //NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-             
-             //NSData *data = [[NSData alloc] initWithBase64EncodedString:string options:NSDataBase64DecodingIgnoreUnknownCharacters];
-             
+             //MARK:XML Parse
+             SHXMLParser *parser = [[SHXMLParser alloc] init];
+             NSDictionary *resultObject = [parser parseData:responseObject];
+             NSArray *dataArray = [SHXMLParser getAsArray:resultObject];
+             NSLog(@"dataArray == %@", dataArray);
+             /*
              NSMutableData *data = [NSMutableData dataWithContentsOfURL:[NSURL URLWithString:@"https://github.com/users/masuhara/contributions"]];
              UIImage *resImage = [[UIImage alloc] initWithData:data];
              
              imageView.image = resImage;
-
+              */
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
              NSLog(@"Error: %@", error.description);

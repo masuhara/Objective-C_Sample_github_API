@@ -13,6 +13,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "YLGIFImage.h"
 
+#define BGCOLOR [UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1.0f]
 
 @interface ViewController ()
 <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -22,6 +23,8 @@
 @implementation ViewController
 {
     IBOutlet UITableView *feedTableView;
+    UIActivityIndicatorView *activityIndicator;
+    
     NSMutableArray *userNameArray;
     NSMutableArray *profileImageArray;
     NSMutableArray *lastUpdatedArray;
@@ -36,6 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = BGCOLOR;
     
     self.edgesForExtendedLayout = UIRectEdgeAll;
     
@@ -76,6 +80,18 @@
 
 - (void)loadData
 {
+    // Loading Display
+    if (feedTableView.hidden == NO) {
+        feedTableView.alpha = 0.0f;
+        feedTableView.hidden = YES;
+        
+        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        activityIndicator.center = self.view.center;
+        [self.view addSubview:activityIndicator];
+        [activityIndicator startAnimating];
+    }
+
+    // AFNetworking
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSString *userName = @"masuhara";
@@ -220,6 +236,21 @@
     }
 }
 */
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+        // End of loading
+        if (feedTableView.hidden == YES) {
+            [UIView animateWithDuration:0.2 animations:^{
+                feedTableView.alpha = 1.0f;
+            }];
+            [activityIndicator stopAnimating];
+            [activityIndicator removeFromSuperview];
+
+            feedTableView.hidden = NO;
+        }
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

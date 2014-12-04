@@ -19,7 +19,9 @@
     // Do any additional setup after loading the view.
     
     [self setNavigationBarTitleImage:[UIImage imageNamed:@"gitmob_title_logo.png"]];
-    
+    if (self.tabBarItem.tag == 1) {
+        [self tabBarItem].badgeValue = @"ぎ";
+    }
 }
 
 - (void)setNavigationBarTitleImage:(UIImage *)image
