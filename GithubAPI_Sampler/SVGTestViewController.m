@@ -34,15 +34,16 @@
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
-             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+             //NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
              
-             NSData *data = [[NSData alloc] initWithBase64EncodedString:string options:NSDataBase64DecodingIgnoreUnknownCharacters];
-             UIImage *resImage = [UIImage imageWithData:data];
+             //NSData *data = [[NSData alloc] initWithBase64EncodedString:string options:NSDataBase64DecodingIgnoreUnknownCharacters];
+             
+             NSMutableData *data = [NSMutableData dataWithContentsOfURL:[NSURL URLWithString:@"https://github.com/users/masuhara/contributions"]];
+             UIImage *resImage = [[UIImage alloc] initWithData:data];
              
              imageView.image = resImage;
 
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
              NSLog(@"Error: %@", error.description);
          }];
