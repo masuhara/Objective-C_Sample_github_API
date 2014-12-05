@@ -18,11 +18,17 @@
 @implementation SVGTestViewController
 {
     IBOutlet UIImageView *imageView;
+    NSMutableArray *dataDateArray;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if (!dataDateArray) {
+        dataDateArray = [NSMutableArray new];
+    }
+    
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSString *userName = @"masuhara";
@@ -39,18 +45,39 @@
              SHXMLParser *parser = [[SHXMLParser alloc] init];
              NSDictionary *resultObject = [parser parseData:responseObject];
              NSArray *dataArray = [SHXMLParser getAsArray:resultObject];
-             NSLog(@"dataArray == %@", dataArray);
+             int height = [[[dataArray valueForKey:@"svg"] valueForKey:@"height"] intValue];
+             int width = [[[dataArray valueForKey:@"svg"] valueForKey:@"width"] intValue];
+             
+             
+             //NSLog(@"dataArray == %@", dataArray);
+             for (NSDictionary *item in dataArray) {
+                 // process an item
+                 //[dataDateArray addObject:[item valueForKey:@"svg"]];
+                 NSLog(@"item == %@", [item objectForKey:@"svg"]);
+             }
+             
              /*
              NSMutableData *data = [NSMutableData dataWithContentsOfURL:[NSURL URLWithString:@"https://github.com/users/masuhara/contributions"]];
              UIImage *resImage = [[UIImage alloc] initWithData:data];
              
              imageView.image = resImage;
               */
+             
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
              NSLog(@"Error: %@", error.description);
          }];
 }
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%@", dataDateArray);
+}
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
