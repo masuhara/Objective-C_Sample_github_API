@@ -9,9 +9,11 @@
 #import "ViewController.h"
 #import "OAuthConstManager.h"
 #import "AFNetworking.h"
+#import "UIKit+AFNetworking.h"
 #import "ContributionTableViewCell.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "YLGIFImage.h"
+#import "DMSVGParser.h"
 
 #define BGCOLOR [UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1.0f]
 
@@ -28,10 +30,11 @@
     NSMutableArray *userNameArray;
     NSMutableArray *profileImageArray;
     NSMutableArray *lastUpdatedArray;
-    NSMutableArray *contributionWebViewArray;
-    NSString *svgStrings[9999];
+    NSMutableArray *contributionArray;
     
     int numberOfFollowings;
+    NSData *contributionData;
+    NSOperationQueue *queue;
 }
 
 
@@ -39,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = BGCOLOR;
     
     self.edgesForExtendedLayout = UIRectEdgeAll;
@@ -49,13 +53,14 @@
     profileImageArray = [NSMutableArray new];
     userNameArray = [NSMutableArray new];
     lastUpdatedArray = [NSMutableArray new];
-    contributionWebViewArray = [NSMutableArray new];
-    
-    
-    self.navigationItem.title = @"hoge";
+    contributionArray = [NSMutableArray new];
     
     UIApplication *application = [UIApplication sharedApplication];
     application.networkActivityIndicatorVisible = YES;
+    
+    queue = [[NSOperationQueue alloc] init];
+    queue.maxConcurrentOperationCount = 4;
+    
     [self loadData];
 }
 
@@ -71,7 +76,7 @@
 
 
 
-#pragma mark -
+#pragma mark - Load Data
 
 - (IBAction)reloadData
 {
@@ -90,7 +95,7 @@
         [self.view addSubview:activityIndicator];
         [activityIndicator startAnimating];
     }
-
+    
     // AFNetworking
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -120,11 +125,16 @@
              for (NSDictionary *dic in array) {
                  [userNameArray addObject:[dic valueForKey:@"login"]];
                  [profileImageArray addObject:[dic valueForKey:@"avatar_url"]];
+                 [contributionArray addObject:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", [dic valueForKey:@"login"]]];
              }
              
-             [self getContributionGraph:manager];
-             NSLog(@"userNameArray == %@", userNameArray);
+             //[self getContributionGraph:manager];
+             //NSLog(@"contributionArray == %@", contributionArray);
              
+             // Renew UI on main Thread
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [feedTableView reloadData];
+             });
              
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
@@ -141,10 +151,9 @@
         [manager GET:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", userNameArray[i]]
           parameters:nil
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
                  
-                 //contributionWebViewArray[i] = string;
-                 svgStrings[i] = string;
+                 //MARK:ContributionArray
+                 [contributionArray addObject:[DMSVGParser getSVGImage:responseObject]];
                  
                  // Renew UI on main Thread
                  dispatch_async(dispatch_get_main_queue(), ^{
@@ -176,7 +185,7 @@
         cell = [[ContributionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                 reuseIdentifier:reuseID];
     }
-
+    
     //MARK:profile Image TAG=1
     UIImageView *profileImageView = (UIImageView *)[cell viewWithTag:1];
     profileImageView.layer.cornerRadius = 5.0f;
@@ -184,23 +193,23 @@
     
     [profileImageView sd_setImageWithURL:profileImageArray[indexPath.row]
                         placeholderImage:[UIImage imageNamed:@"grabatar@2x.png"]
-                               options:SDWebImageCacheMemoryOnly
-                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                 
-                                 UIApplication *application = [UIApplication sharedApplication];
-                                 application.networkActivityIndicatorVisible = NO;
-                                 // Cache Flag
-                                 if (cacheType != SDImageCacheTypeMemory) {
-                                     // Fade Animation
-                                     [UIView transitionWithView:profileImageView
-                                                       duration:0.3f
-                                                        options:UIViewAnimationOptionTransitionCrossDissolve
-                                                     animations:^{
-                                                         profileImageView.image = image;
-                                                     } completion:nil];
-                                     
-                                 }
-                             }];
+                                 options:SDWebImageCacheMemoryOnly
+                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                   
+                                   UIApplication *application = [UIApplication sharedApplication];
+                                   application.networkActivityIndicatorVisible = NO;
+                                   // Cache Flag
+                                   if (cacheType != SDImageCacheTypeMemory) {
+                                       // Fade Animation
+                                       [UIView transitionWithView:profileImageView
+                                                         duration:0.3f
+                                                          options:UIViewAnimationOptionTransitionCrossDissolve
+                                                       animations:^{
+                                                           profileImageView.image = image;
+                                                       } completion:nil];
+                                       
+                                   }
+                               }];
     
     //MARK:User Name TAG=2
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
@@ -210,32 +219,31 @@
     //UILabel *lastUpdatedLabel = (UILabel *)[cell viewWithTag:3];
     //lastUpdatedLabel.text = lastUpdatedArray[indexPath.row];
     
-    //MARK:fix reuse cell Problem
-    //MARK:contribution webView TAG=5
-    UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
-    
-    // not clear without these 2 lines
-    webView.backgroundColor = [UIColor clearColor];
-    webView.opaque = NO;
-    
-    webView.delegate = self;
-    webView.scalesPageToFit = YES;
-    [webView loadHTMLString:svgStrings[indexPath.row] baseURL:nil];
+    //MARK:contribution TAG=5
+    UIImageView *contributionView = (UIImageView *)[cell viewWithTag:5];
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    contributionView.image = nil;
+    dispatch_async(q_global, ^{
+                UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:contributionArray[indexPath.row]]]];
+        
+        dispatch_async(q_main, ^{
+            // Fade Animation
+            [UIView transitionWithView:profileImageView
+                              duration:0.3f
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^{
+                                contributionView.image = image;
+                            } completion:nil];
+            [cell layoutSubviews];
+        });
+    });
     
     return cell;
 }
 
 #pragma mark - TableView Delegate
-/*
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound)
-    {
-        UIWebView *webView = (UIWebView *)[cell viewWithTag:5];
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    }
-}
-*/
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
@@ -246,7 +254,7 @@
             }];
             [activityIndicator stopAnimating];
             [activityIndicator removeFromSuperview];
-
+            
             feedTableView.hidden = NO;
         }
     }
@@ -260,17 +268,17 @@
 
 #pragma mark - Scroll Control
 /*
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if(feedTableView.contentOffset.y >= (feedTableView.contentSize.height - feedTableView.bounds.size.height))
-    {
-        if (totalPages > (pageNumber * ONCE_READ_COUNT)) {
-            pageNumber ++;
-            [feedTableView reloadData];
-        }
-    }
-}
-*/
+ - (void)scrollViewDidScroll:(UIScrollView *)scrollView
+ {
+ if(feedTableView.contentOffset.y >= (feedTableView.contentSize.height - feedTableView.bounds.size.height))
+ {
+ if (totalPages > (pageNumber * ONCE_READ_COUNT)) {
+ pageNumber ++;
+ [feedTableView reloadData];
+ }
+ }
+ }
+ */
 
 
 

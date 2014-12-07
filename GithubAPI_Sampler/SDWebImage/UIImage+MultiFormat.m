@@ -11,6 +11,7 @@
 #import "NSData+ImageContentType.h"
 #import <ImageIO/ImageIO.h>
 
+
 #ifdef SD_WEBP
 #import "UIImage+WebP.h"
 #endif
@@ -39,7 +40,7 @@
         }
     }
 
-
+    
     return image;
 }
 

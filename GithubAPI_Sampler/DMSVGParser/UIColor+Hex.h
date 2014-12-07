@@ -1,14 +1,17 @@
 //
-//  DMSVGParser.m
+//  UIColor+Hex.h
 //  GithubAPI_Sampler
 //
 //  Created by Master on 2014/12/08.
 //  Copyright (c) 2014年 net.masuhara. All rights reserved.
 //
 
-#import "DMSVGParser.h"
+#import <UIKit/UIKit.h>
 
-@implementation DMSVGParser
+@interface UIColor (Hex)
+
+
++ (UIColor *)colorWithHex:(NSString *)colorCode;
 
 
 @end

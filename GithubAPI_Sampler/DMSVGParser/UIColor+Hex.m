@@ -15,6 +15,7 @@
     return [UIColor colorWithHex:colorCode alpha:1.0];
 }
 
+
 + (UIColor *)colorWithHex:(NSString *)colorCode alpha:(CGFloat)alpha
 {
     if ([[colorCode substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"]) {

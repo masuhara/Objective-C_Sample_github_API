@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface DMSVGParser : NSObject
+
+
+
++ (UIImage *)getSVGImage:(NSData *)svgData;
 
 @end
