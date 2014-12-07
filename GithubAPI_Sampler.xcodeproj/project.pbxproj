@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF11C4DF1A3044A5000FF44B /* SHXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4DE1A3044A5000FF44B /* SHXMLParser.m */; };
+		AF11C4E31A348339000FF44B /* SKUBezierPath+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4E21A348339000FF44B /* SKUBezierPath+SVG.m */; };
+		AF11C4E61A348423000FF44B /* PathView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4E51A348423000FF44B /* PathView.m */; };
 		AF5FFF6A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m */; };
 		AF5FFF6B1A245E6F00E2A08F /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4C1A245E6F00E2A08F /* NSData+ImageContentType.m */; };
 		AF5FFF6C1A245E6F00E2A08F /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4E1A245E6F00E2A08F /* SDImageCache.m */; };
@@ -84,6 +86,10 @@
 /* Begin PBXFileReference section */
 		AF11C4DD1A3044A5000FF44B /* SHXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHXMLParser.h; sourceTree = "<group>"; };
 		AF11C4DE1A3044A5000FF44B /* SHXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHXMLParser.m; sourceTree = "<group>"; };
+		AF11C4E11A348339000FF44B /* SKUBezierPath+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKUBezierPath+SVG.h"; sourceTree = "<group>"; };
+		AF11C4E21A348339000FF44B /* SKUBezierPath+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKUBezierPath+SVG.m"; sourceTree = "<group>"; };
+		AF11C4E41A348423000FF44B /* PathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathView.h; sourceTree = "<group>"; };
+		AF11C4E51A348423000FF44B /* PathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathView.m; sourceTree = "<group>"; };
 		AF5FFF491A245E6F00E2A08F /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF5FFF4A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF5FFF4B1A245E6F00E2A08F /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -240,6 +246,15 @@
 			path = SHXMLParser;
 			sourceTree = "<group>";
 		};
+		AF11C4E01A34831E000FF44B /* UIBezierPath+SVG */ = {
+			isa = PBXGroup;
+			children = (
+				AF11C4E11A348339000FF44B /* SKUBezierPath+SVG.h */,
+				AF11C4E21A348339000FF44B /* SKUBezierPath+SVG.m */,
+			);
+			name = "UIBezierPath+SVG";
+			sourceTree = "<group>";
+		};
 		AF5FFF481A245E6F00E2A08F /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +374,8 @@
 				AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */,
 				AF9D8BE51A2700900002B38F /* SVGTestViewController.h */,
 				AF9D8BE61A2700900002B38F /* SVGTestViewController.m */,
+				AF11C4E41A348423000FF44B /* PathView.h */,
+				AF11C4E51A348423000FF44B /* PathView.m */,
 				AF9770BE1A1F77CE008D13AA /* Main.storyboard */,
 				AF9770C11A1F77CE008D13AA /* Images.xcassets */,
 				AF9770C31A1F77CE008D13AA /* LaunchScreen.xib */,
@@ -443,6 +460,7 @@
 		AFAB99A91A22EE1C000EE1B9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AF11C4E01A34831E000FF44B /* UIBezierPath+SVG */,
 				AF11C4DC1A3044A5000FF44B /* SHXMLParser */,
 				AF9D8BE11A2700310002B38F /* PocketSVG */,
 				AF7180BE1A24672F00C7FFA1 /* YLGIFImage */,
@@ -599,12 +617,14 @@
 				AF7180C41A24672F00C7FFA1 /* YLGIFImage.m in Sources */,
 				AF9D8BE71A2700900002B38F /* SVGTestViewController.m in Sources */,
 				AF5FFF741A245E6F00E2A08F /* UIImage+GIF.m in Sources */,
+				AF11C4E61A348423000FF44B /* PathView.m in Sources */,
 				AF5FFF721A245E6F00E2A08F /* SDWebImagePrefetcher.m in Sources */,
 				AF9771D51A1FCC4D008D13AA /* AFHTTPRequestOperation.m in Sources */,
 				AFAB99A81A22A996000EE1B9 /* ContributionTableViewCell.m in Sources */,
 				AF5FFF771A245E6F00E2A08F /* UIImageView+HighlightedWebCache.m in Sources */,
 				AF5FFF6E1A245E6F00E2A08F /* SDWebImageDecoder.m in Sources */,
 				AF5FFF6B1A245E6F00E2A08F /* NSData+ImageContentType.m in Sources */,
+				AF11C4E31A348339000FF44B /* SKUBezierPath+SVG.m in Sources */,
 				AF5FFF711A245E6F00E2A08F /* SDWebImageManager.m in Sources */,
 				AF5FFF791A245E6F00E2A08F /* UIView+WebCacheOperation.m in Sources */,
 				AF9771D71A1FCC4D008D13AA /* AFHTTPSessionManager.m in Sources */,

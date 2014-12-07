@@ -10,6 +10,12 @@
 #import "PocketSVG.h"
 #import "AFNetworking.h"
 #import "SHXMLParser.h"
+#import "PathView.h"
+
+#define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0 \
+green:G/255.0 \
+blue:B/255.0 \
+alpha:A/255.0]
 
 @interface SVGTestViewController ()
 
@@ -41,21 +47,33 @@
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
+             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+             
+             PathView *octocatView = [[PathView alloc] initWithFrame:CGRectMake(0.0, 0.0, 130.0, 130.0)
+                                                        andSVGString:string
+                                                               scale:4.0
+                                                           fillColor:RGBA(102.0, 102.0, 153.0, 255.0)];
+             [self.view addSubview:octocatView];
+             NSLog(@"octocatView == %@", octocatView);
+             
+             
              //MARK:XML Parse
+             /*
              SHXMLParser *parser = [[SHXMLParser alloc] init];
              NSDictionary *resultObject = [parser parseData:responseObject];
              NSArray *dataArray = [SHXMLParser getAsArray:resultObject];
              int height = [[[dataArray valueForKey:@"svg"] valueForKey:@"height"] intValue];
              int width = [[[dataArray valueForKey:@"svg"] valueForKey:@"width"] intValue];
-             
+             */
              
              //NSLog(@"dataArray == %@", dataArray);
+             /*
              for (NSDictionary *item in dataArray) {
                  // process an item
                  //[dataDateArray addObject:[item valueForKey:@"svg"]];
                  NSLog(@"item == %@", [item objectForKey:@"svg"]);
              }
-             
+             */
              
              
              /*
