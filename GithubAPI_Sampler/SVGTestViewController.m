@@ -7,15 +7,10 @@
 //
 
 #import "SVGTestViewController.h"
-#import "PocketSVG.h"
 #import "AFNetworking.h"
 #import "SHXMLParser.h"
-#import "PathView.h"
+#import "UIColor+Hex.h"
 
-#define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0 \
-green:G/255.0 \
-blue:B/255.0 \
-alpha:A/255.0]
 
 @interface SVGTestViewController ()
 
@@ -47,42 +42,50 @@ alpha:A/255.0]
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
-             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-             
-             PathView *octocatView = [[PathView alloc] initWithFrame:CGRectMake(0.0, 0.0, 130.0, 130.0)
-                                                        andSVGString:string
-                                                               scale:4.0
-                                                           fillColor:RGBA(102.0, 102.0, 153.0, 255.0)];
-             [self.view addSubview:octocatView];
-             NSLog(@"octocatView == %@", octocatView);
-             
-             
-             //MARK:XML Parse
              /*
+             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+              */
+
+             //MARK:XML Parse
              SHXMLParser *parser = [[SHXMLParser alloc] init];
              NSDictionary *resultObject = [parser parseData:responseObject];
              NSArray *dataArray = [SHXMLParser getAsArray:resultObject];
-             int height = [[[dataArray valueForKey:@"svg"] valueForKey:@"height"] intValue];
-             int width = [[[dataArray valueForKey:@"svg"] valueForKey:@"width"] intValue];
-             */
              
-             //NSLog(@"dataArray == %@", dataArray);
-             /*
-             for (NSDictionary *item in dataArray) {
-                 // process an item
-                 //[dataDateArray addObject:[item valueForKey:@"svg"]];
-                 NSLog(@"item == %@", [item objectForKey:@"svg"]);
+             
+             for (NSDictionary *dic in dataArray) {
+                 int height = [[[dic valueForKey:@"svg"] valueForKey:@"height"] intValue];
+                 int width = [[[dic valueForKey:@"svg"] valueForKey:@"width"] intValue];
+                 UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+                 bgView.backgroundColor = [UIColor yellowColor];
+                 [self.view addSubview:bgView];
+                 
+                 NSArray *array = [[[[dic valueForKey:@"svg"] valueForKey:@"g"] valueForKey:@"g"] valueForKey:@"rect"];
+                 
+                 //"g" -> week (54)
+                 //"rect" -> 7
+                 //NSLog(@"array == %@", [[array[3] valueForKey:@"rect"] valueForKey:@"fill"]);
+                 //NSLog(@"%@", array);
+                 
+                 for (int i = 0; i < array.count; i++) {
+                     
+                     NSArray *contentArray = array[i];
+                     NSLog(@"contentArray = %@", contentArray);
+                     for (int j = 0; j < contentArray.count; j++) {
+                         
+                         int height = [[contentArray valueForKey:@"height"] intValue];
+                         int width = [[contentArray valueForKey:@"width"] intValue];
+                         
+                         UIView *rect = [[UIView alloc] init];
+                         rect.frame = CGRectMake(width * i, height * j, width, height);
+                         rect.backgroundColor = [UIColor redColor];
+                         /*
+                          rect.backgroundColor = [UIColor colorWithHex:[[array[i] valueForKey:@"rect"] valueForKey:@"fill"] alpha:1.0];
+                          */
+                         [self.view addSubview:rect];
+                     }
+                 }
              }
-             */
-             
-             
-             /*
-             NSMutableData *data = [NSMutableData dataWithContentsOfURL:[NSURL URLWithString:@"https://github.com/users/masuhara/contributions"]];
-             UIImage *resImage = [[UIImage alloc] initWithData:data];
-             
-             imageView.image = resImage;
-              */
-             
+
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
              NSLog(@"Error: %@", error.description);
@@ -92,7 +95,7 @@ alpha:A/255.0]
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%@", dataDateArray);
+    NSLog(@"dataDateArray = %@", dataDateArray);
 }
 
 

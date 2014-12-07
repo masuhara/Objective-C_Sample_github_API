@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF11C4DF1A3044A5000FF44B /* SHXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4DE1A3044A5000FF44B /* SHXMLParser.m */; };
-		AF11C4E31A348339000FF44B /* SKUBezierPath+SVG.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4E21A348339000FF44B /* SKUBezierPath+SVG.m */; };
-		AF11C4E61A348423000FF44B /* PathView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4E51A348423000FF44B /* PathView.m */; };
+		AF11C4EA1A34A5A3000FF44B /* DMSVGParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4E91A34A5A3000FF44B /* DMSVGParser.m */; };
+		AF11C4ED1A34A998000FF44B /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4EC1A34A998000FF44B /* UIColor+Hex.m */; };
 		AF5FFF6A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m */; };
 		AF5FFF6B1A245E6F00E2A08F /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4C1A245E6F00E2A08F /* NSData+ImageContentType.m */; };
 		AF5FFF6C1A245E6F00E2A08F /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4E1A245E6F00E2A08F /* SDImageCache.m */; };
@@ -68,7 +68,6 @@
 		AF9B39F01A29B0EB00C926A9 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39EE1A29B0EB00C926A9 /* setting@2x.png */; };
 		AF9B39FA1A29FAE300C926A9 /* octocat120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39F91A29FAE300C926A9 /* octocat120@2x.png */; };
 		AF9B39FC1A2A000300C926A9 /* gitmob_title_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9B39FB1A2A000300C926A9 /* gitmob_title_logo@2x.png */; };
-		AF9D8BE41A2700460002B38F /* PocketSVG.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D8BE31A2700460002B38F /* PocketSVG.m */; };
 		AF9D8BE71A2700900002B38F /* SVGTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D8BE61A2700900002B38F /* SVGTestViewController.m */; };
 		AFAB99A81A22A996000EE1B9 /* ContributionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -86,10 +85,10 @@
 /* Begin PBXFileReference section */
 		AF11C4DD1A3044A5000FF44B /* SHXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHXMLParser.h; sourceTree = "<group>"; };
 		AF11C4DE1A3044A5000FF44B /* SHXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHXMLParser.m; sourceTree = "<group>"; };
-		AF11C4E11A348339000FF44B /* SKUBezierPath+SVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKUBezierPath+SVG.h"; sourceTree = "<group>"; };
-		AF11C4E21A348339000FF44B /* SKUBezierPath+SVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKUBezierPath+SVG.m"; sourceTree = "<group>"; };
-		AF11C4E41A348423000FF44B /* PathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathView.h; sourceTree = "<group>"; };
-		AF11C4E51A348423000FF44B /* PathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathView.m; sourceTree = "<group>"; };
+		AF11C4E81A34A5A3000FF44B /* DMSVGParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSVGParser.h; sourceTree = "<group>"; };
+		AF11C4E91A34A5A3000FF44B /* DMSVGParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSVGParser.m; sourceTree = "<group>"; };
+		AF11C4EB1A34A998000FF44B /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		AF11C4EC1A34A998000FF44B /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		AF5FFF491A245E6F00E2A08F /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF5FFF4A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF5FFF4B1A245E6F00E2A08F /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -199,8 +198,6 @@
 		AF9B39EE1A29B0EB00C926A9 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
 		AF9B39F91A29FAE300C926A9 /* octocat120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "octocat120@2x.png"; sourceTree = "<group>"; };
 		AF9B39FB1A2A000300C926A9 /* gitmob_title_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gitmob_title_logo@2x.png"; sourceTree = "<group>"; };
-		AF9D8BE21A2700460002B38F /* PocketSVG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketSVG.h; sourceTree = "<group>"; };
-		AF9D8BE31A2700460002B38F /* PocketSVG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketSVG.m; sourceTree = "<group>"; };
 		AF9D8BE51A2700900002B38F /* SVGTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGTestViewController.h; sourceTree = "<group>"; };
 		AF9D8BE61A2700900002B38F /* SVGTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGTestViewController.m; sourceTree = "<group>"; };
 		AFAB99A61A22A996000EE1B9 /* ContributionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContributionTableViewCell.h; sourceTree = "<group>"; };
@@ -246,13 +243,15 @@
 			path = SHXMLParser;
 			sourceTree = "<group>";
 		};
-		AF11C4E01A34831E000FF44B /* UIBezierPath+SVG */ = {
+		AF11C4E71A34A581000FF44B /* DMSVGParser */ = {
 			isa = PBXGroup;
 			children = (
-				AF11C4E11A348339000FF44B /* SKUBezierPath+SVG.h */,
-				AF11C4E21A348339000FF44B /* SKUBezierPath+SVG.m */,
+				AF11C4E81A34A5A3000FF44B /* DMSVGParser.h */,
+				AF11C4E91A34A5A3000FF44B /* DMSVGParser.m */,
+				AF11C4EB1A34A998000FF44B /* UIColor+Hex.h */,
+				AF11C4EC1A34A998000FF44B /* UIColor+Hex.m */,
 			);
-			name = "UIBezierPath+SVG";
+			name = DMSVGParser;
 			sourceTree = "<group>";
 		};
 		AF5FFF481A245E6F00E2A08F /* SDWebImage */ = {
@@ -374,8 +373,6 @@
 				AFAB99A71A22A996000EE1B9 /* ContributionTableViewCell.m */,
 				AF9D8BE51A2700900002B38F /* SVGTestViewController.h */,
 				AF9D8BE61A2700900002B38F /* SVGTestViewController.m */,
-				AF11C4E41A348423000FF44B /* PathView.h */,
-				AF11C4E51A348423000FF44B /* PathView.m */,
 				AF9770BE1A1F77CE008D13AA /* Main.storyboard */,
 				AF9770C11A1F77CE008D13AA /* Images.xcassets */,
 				AF9770C31A1F77CE008D13AA /* LaunchScreen.xib */,
@@ -448,21 +445,11 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
-		AF9D8BE11A2700310002B38F /* PocketSVG */ = {
-			isa = PBXGroup;
-			children = (
-				AF9D8BE21A2700460002B38F /* PocketSVG.h */,
-				AF9D8BE31A2700460002B38F /* PocketSVG.m */,
-			);
-			name = PocketSVG;
-			sourceTree = "<group>";
-		};
 		AFAB99A91A22EE1C000EE1B9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				AF11C4E01A34831E000FF44B /* UIBezierPath+SVG */,
+				AF11C4E71A34A581000FF44B /* DMSVGParser */,
 				AF11C4DC1A3044A5000FF44B /* SHXMLParser */,
-				AF9D8BE11A2700310002B38F /* PocketSVG */,
 				AF7180BE1A24672F00C7FFA1 /* YLGIFImage */,
 				AF5FFF481A245E6F00E2A08F /* SDWebImage */,
 				AF9771C11A1FCC4D008D13AA /* AFNetworking */,
@@ -594,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF9771151A1F7AF4008D13AA /* OAuthConstManager.m in Sources */,
+				AF11C4ED1A34A998000FF44B /* UIColor+Hex.m in Sources */,
 				AF9770BD1A1F77CE008D13AA /* ViewController.m in Sources */,
 				AF5FFF6D1A245E6F00E2A08F /* SDWebImageCompat.m in Sources */,
 				AF9771DC1A1FCC4D008D13AA /* AFURLResponseSerialization.m in Sources */,
@@ -607,24 +595,22 @@
 				AF9770BA1A1F77CE008D13AA /* AppDelegate.m in Sources */,
 				AF5FFF6F1A245E6F00E2A08F /* SDWebImageDownloader.m in Sources */,
 				AF9771D61A1FCC4D008D13AA /* AFHTTPRequestOperationManager.m in Sources */,
+				AF11C4EA1A34A5A3000FF44B /* DMSVGParser.m in Sources */,
 				AF9771D91A1FCC4D008D13AA /* AFSecurityPolicy.m in Sources */,
 				AF9770B71A1F77CE008D13AA /* main.m in Sources */,
 				AF5FFF761A245E6F00E2A08F /* UIImage+WebP.m in Sources */,
 				AF9771DB1A1FCC4D008D13AA /* AFURLRequestSerialization.m in Sources */,
 				AF9771D81A1FCC4D008D13AA /* AFNetworkReachabilityManager.m in Sources */,
 				AF5FFF6A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m in Sources */,
-				AF9D8BE41A2700460002B38F /* PocketSVG.m in Sources */,
 				AF7180C41A24672F00C7FFA1 /* YLGIFImage.m in Sources */,
 				AF9D8BE71A2700900002B38F /* SVGTestViewController.m in Sources */,
 				AF5FFF741A245E6F00E2A08F /* UIImage+GIF.m in Sources */,
-				AF11C4E61A348423000FF44B /* PathView.m in Sources */,
 				AF5FFF721A245E6F00E2A08F /* SDWebImagePrefetcher.m in Sources */,
 				AF9771D51A1FCC4D008D13AA /* AFHTTPRequestOperation.m in Sources */,
 				AFAB99A81A22A996000EE1B9 /* ContributionTableViewCell.m in Sources */,
 				AF5FFF771A245E6F00E2A08F /* UIImageView+HighlightedWebCache.m in Sources */,
 				AF5FFF6E1A245E6F00E2A08F /* SDWebImageDecoder.m in Sources */,
 				AF5FFF6B1A245E6F00E2A08F /* NSData+ImageContentType.m in Sources */,
-				AF11C4E31A348339000FF44B /* SKUBezierPath+SVG.m in Sources */,
 				AF5FFF711A245E6F00E2A08F /* SDWebImageManager.m in Sources */,
 				AF5FFF791A245E6F00E2A08F /* UIView+WebCacheOperation.m in Sources */,
 				AF9771D71A1FCC4D008D13AA /* AFHTTPSessionManager.m in Sources */,
