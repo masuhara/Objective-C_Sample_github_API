@@ -15,6 +15,8 @@
 #import "YLGIFImage.h"
 #import "DMSVGParser.h"
 
+#import "GithubAPI_Sampler-Swift.h"
+
 #define BGCOLOR [UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1.0f]
 
 @interface ViewController ()
@@ -113,7 +115,7 @@
 - (int)getFolloingInfo:(AFHTTPRequestOperationManager *)manager withUserName:(NSString *)userName
 {
     
-    [manager GET:@"https://api.github.com/users/masuhara/following?page=1&per_page=100"
+    [manager GET:@"https://api.github.com/users/masuhara/following?page=1&per_page=10"
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
@@ -125,10 +127,10 @@
              for (NSDictionary *dic in array) {
                  [userNameArray addObject:[dic valueForKey:@"login"]];
                  [profileImageArray addObject:[dic valueForKey:@"avatar_url"]];
-                 [contributionArray addObject:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", [dic valueForKey:@"login"]]];
+                 // [contributionArray addObject:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", [dic valueForKey:@"login"]]];
              }
              
-             //[self getContributionGraph:manager];
+             [self getContributionGraph:manager];
              //NSLog(@"contributionArray == %@", contributionArray);
              
              // Renew UI on main Thread
@@ -147,23 +149,28 @@
 
 - (void)getContributionGraph:(AFHTTPRequestOperationManager *)manager
 {
-    for (int i = 0; i < userNameArray.count; i++) {
-        [manager GET:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", userNameArray[i]]
-          parameters:nil
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 
-                 //MARK:ContributionArray
-                 [contributionArray addObject:[DMSVGParser getSVGImage:responseObject]];
-                 
-                 // Renew UI on main Thread
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [feedTableView reloadData];
-                 });
-                 
-             }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 
-                 NSLog(@"Error: %@", error.description);
-             }];
+//    for (int i = 0; i < userNameArray.count; i++) {
+//        [manager GET:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", userNameArray[i]]
+//          parameters:nil
+//             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                 
+//                 //MARK:ContributionArray
+//                 [contributionArray addObject:[DMSVGParser getSVGImage:responseObject]];
+//                 
+//                 // Renew UI on main Thread
+//                 dispatch_async(dispatch_get_main_queue(), ^{
+//                     [feedTableView reloadData];
+//                 });
+//                 
+//             }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                 
+//                 NSLog(@"Error: %@", error.description);
+//             }];
+//    }
+    
+    for (NSString *name in userNameArray) {
+        UIImage *image = [[KNKSVGView alloc] initWithUserName:name].toImage;
+        [contributionArray addObject:image];
     }
 }
 
@@ -225,17 +232,26 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     contributionView.image = nil;
     dispatch_async(q_global, ^{
-                UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:contributionArray[indexPath.row]]]];
+                 // UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:contributionArray[indexPath.row]]]];
         
+        
+        UIImage *image = contributionArray[indexPath.row];
         dispatch_async(q_main, ^{
+            contributionView.image = image;
+            contributionView.transform = CGAffineTransformMakeScale(0.6, 0.6);
+            contributionView.alpha = 0.0;
+            [UIView animateWithDuration:0.4 animations:^{
+                contributionView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                contributionView.alpha = 1.0;
+            }];
             // Fade Animation
-            [UIView transitionWithView:profileImageView
-                              duration:0.3f
-                               options:UIViewAnimationOptionTransitionCrossDissolve
-                            animations:^{
-                                contributionView.image = image;
-                            } completion:nil];
-            [cell layoutSubviews];
+//            [UIView transitionWithView:profileImageView
+//                              duration:0.3f
+//                               options:UIViewAnimationOptionTransitionCrossDissolve
+//                            animations:^{
+//                                contributionView.image = image;
+//                            } completion:nil];
+//            [cell layoutSubviews];
         });
     });
     
