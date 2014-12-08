@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AAF405A1A35655800CDA08D /* KNKSVGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF40571A35655800CDA08D /* KNKSVGView.swift */; };
+		4AAF405B1A35655800CDA08D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF40581A35655800CDA08D /* SwiftyJSON.swift */; };
+		4AAF405C1A35655800CDA08D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF40591A35655800CDA08D /* UIColorExtension.swift */; };
 		AF11C4DF1A3044A5000FF44B /* SHXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4DE1A3044A5000FF44B /* SHXMLParser.m */; };
 		AF11C5001A34D2FB000FF44B /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4F01A34D2FB000FF44B /* AFNetworkActivityIndicatorManager.m */; };
 		AF11C5011A34D2FB000FF44B /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4F21A34D2FB000FF44B /* UIActivityIndicatorView+AFNetworking.m */; };
@@ -91,6 +94,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4AAF40561A35655700CDA08D /* GithubAPI_Sampler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubAPI_Sampler-Bridging-Header.h"; sourceTree = "<group>"; };
+		4AAF40571A35655800CDA08D /* KNKSVGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNKSVGView.swift; sourceTree = "<group>"; };
+		4AAF40581A35655800CDA08D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		4AAF40591A35655800CDA08D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		AF11C4DD1A3044A5000FF44B /* SHXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHXMLParser.h; sourceTree = "<group>"; };
 		AF11C4DE1A3044A5000FF44B /* SHXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHXMLParser.m; sourceTree = "<group>"; };
 		AF11C4EF1A34D2FB000FF44B /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
@@ -259,6 +266,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AAF40551A35654200CDA08D /* KNKSGVParser */ = {
+			isa = PBXGroup;
+			children = (
+				4AAF40571A35655800CDA08D /* KNKSVGView.swift */,
+				4AAF40581A35655800CDA08D /* SwiftyJSON.swift */,
+				4AAF40591A35655800CDA08D /* UIColorExtension.swift */,
+			);
+			name = KNKSGVParser;
+			sourceTree = "<group>";
+		};
 		AF11C4DC1A3044A5000FF44B /* SHXMLParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +444,7 @@
 				AF9770BE1A1F77CE008D13AA /* Main.storyboard */,
 				AF9770C11A1F77CE008D13AA /* Images.xcassets */,
 				AF9770C31A1F77CE008D13AA /* LaunchScreen.xib */,
+				4AAF40561A35655700CDA08D /* GithubAPI_Sampler-Bridging-Header.h */,
 				AF9770B41A1F77CE008D13AA /* Supporting Files */,
 			);
 			path = GithubAPI_Sampler;
@@ -500,6 +518,7 @@
 		AFAB99A91A22EE1C000EE1B9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				4AAF40551A35654200CDA08D /* KNKSGVParser */,
 				AF11C53A1A34F3C9000FF44B /* DMSVGParser */,
 				AF7180BE1A24672F00C7FFA1 /* YLGIFImage */,
 				AF5FFF481A245E6F00E2A08F /* SDWebImage */,
@@ -646,7 +665,9 @@
 				AF5FFF751A245E6F00E2A08F /* UIImage+MultiFormat.m in Sources */,
 				AF5FFF781A245E6F00E2A08F /* UIImageView+WebCache.m in Sources */,
 				AF9771DA1A1FCC4D008D13AA /* AFURLConnectionOperation.m in Sources */,
+				4AAF405C1A35655800CDA08D /* UIColorExtension.swift in Sources */,
 				AF9770BA1A1F77CE008D13AA /* AppDelegate.m in Sources */,
+				4AAF405A1A35655800CDA08D /* KNKSVGView.swift in Sources */,
 				AF11C5071A34D2FB000FF44B /* UIWebView+AFNetworking.m in Sources */,
 				AF5FFF6F1A245E6F00E2A08F /* SDWebImageDownloader.m in Sources */,
 				AF9771D61A1FCC4D008D13AA /* AFHTTPRequestOperationManager.m in Sources */,
@@ -657,6 +678,7 @@
 				AF11C5041A34D2FB000FF44B /* UIImageView+AFNetworking.m in Sources */,
 				AF11C5051A34D2FB000FF44B /* UIProgressView+AFNetworking.m in Sources */,
 				AF9771D81A1FCC4D008D13AA /* AFNetworkReachabilityManager.m in Sources */,
+				4AAF405B1A35655800CDA08D /* SwiftyJSON.swift in Sources */,
 				AF5FFF6A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m in Sources */,
 				AF7180C41A24672F00C7FFA1 /* YLGIFImage.m in Sources */,
 				AF9D8BE71A2700900002B38F /* SVGTestViewController.m in Sources */,
@@ -798,6 +820,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = GithubAPI_Sampler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -808,6 +831,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GithubAPI_Sampler/GithubAPI_Sampler-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -815,6 +840,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = GithubAPI_Sampler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -825,6 +851,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GithubAPI_Sampler/GithubAPI_Sampler-Bridging-Header.h";
 			};
 			name = Release;
 		};

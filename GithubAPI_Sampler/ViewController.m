@@ -15,6 +15,8 @@
 #import "YLGIFImage.h"
 #import "DMSVGParser.h"
 
+#import "GithubAPI_Sampler-Swift.h"
+
 #define BGCOLOR [UIColor colorWithRed:240/255.0f green:240/255.0f blue:240/255.0f alpha:1.0f]
 
 @interface ViewController ()
@@ -225,17 +227,26 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     contributionView.image = nil;
     dispatch_async(q_global, ^{
-                UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:contributionArray[indexPath.row]]]];
+                 // UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:contributionArray[indexPath.row]]]];
         
+        
+        UIImage *image = [[KNKSVGView alloc] initWithUserName:userNameArray[indexPath.row]].toImage;
         dispatch_async(q_main, ^{
+            contributionView.image = image;
+            contributionView.transform = CGAffineTransformMakeScale(0.6, 0.6);
+            contributionView.alpha = 0.0;
+            [UIView animateWithDuration:0.4 animations:^{
+                contributionView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                contributionView.alpha = 1.0;
+            }];
             // Fade Animation
-            [UIView transitionWithView:profileImageView
-                              duration:0.3f
-                               options:UIViewAnimationOptionTransitionCrossDissolve
-                            animations:^{
-                                contributionView.image = image;
-                            } completion:nil];
-            [cell layoutSubviews];
+//            [UIView transitionWithView:profileImageView
+//                              duration:0.3f
+//                               options:UIViewAnimationOptionTransitionCrossDissolve
+//                            animations:^{
+//                                contributionView.image = image;
+//                            } completion:nil];
+//            [cell layoutSubviews];
         });
     });
     
