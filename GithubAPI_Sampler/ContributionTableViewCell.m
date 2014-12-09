@@ -26,14 +26,9 @@
     profileImageView.image = image;
 }
 
-//- (void)setContributionView:(UIImageView *)imageView
-//{
-//    contributionView = imageView;
-//}
-
-- (void)setContributionView:(UIWebView *)webView
+- (void)setContributionView:(UIImageView *)imageView
 {
-    contributionView = webView;
+    contributionView = imageView;
 }
 
 - (void)setName:(NSString *)text
@@ -41,11 +36,13 @@
     nameLabel.text = text;
 }
 
-
+/*
 - (void)prepareForReuse
 {
-    UIWebView *webView = (UIWebView *)[super viewWithTag:5];
+    UIImageView *webView = (UIImageView *)[super viewWithTag:5];
     webView = nil;
 }
+*/
+
 
 @end

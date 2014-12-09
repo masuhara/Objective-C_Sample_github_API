@@ -12,14 +12,12 @@
 {
     __weak IBOutlet UIImageView *profileImageView;
     __weak IBOutlet UILabel *nameLabel;
-    //__weak IBOutlet UIImageView *contributionView;
-    __weak IBOutlet UIWebView *contributionView;
+    __weak IBOutlet UIImageView *contributionView;
 }
 
 
 - (void)setProfileImage:(UIImage *)image;
-//- (void)setContributionView:(UIImageView *)contributionView;
-- (void)setContributionView:(UIWebView *)contributionView;
+- (void)setContributionView:(UIImageView *)contributionView;
 - (void)setName:(NSString *)text;
 
 

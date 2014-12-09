@@ -10,6 +10,12 @@
 #import "SHXMLParser.h"
 #import "UIColor+Hex.h"
 
+
+#define CELL_HEIGHT 721/54
+#define CELL_WIDTH 721/54
+#define BORDER_WIDTH 1.0f
+
+
 @implementation DMSVGParser
 
 
@@ -38,13 +44,10 @@
             NSArray *contentArray = array[i];
 
             for (int j = 0; j < contentArray.count; j++) {
-
-                int cellHeight = 11;
-                int cellWidth = 11;
                 
                 UIView *rect = [[UIView alloc] init];
-                rect.frame = CGRectMake(cellWidth * i, cellHeight * j, cellWidth, cellHeight);
-                rect.layer.borderWidth = 0.6f;
+                rect.frame = CGRectMake(CELL_WIDTH * i, CELL_HEIGHT * j, CELL_WIDTH, CELL_HEIGHT);
+                rect.layer.borderWidth = BORDER_WIDTH;
                 rect.layer.borderColor = [[UIColor whiteColor] CGColor];
                 
                 //MARK:Class Judgement

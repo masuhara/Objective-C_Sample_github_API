@@ -18,6 +18,9 @@
 		AF11C5071A34D2FB000FF44B /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C4FF1A34D2FB000FF44B /* UIWebView+AFNetworking.m */; };
 		AF11C53F1A34F3C9000FF44B /* DMSVGParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C53C1A34F3C9000FF44B /* DMSVGParser.m */; };
 		AF11C5401A34F3C9000FF44B /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C53E1A34F3C9000FF44B /* UIColor+Hex.m */; };
+		AF11C58D1A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C58A1A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.m */; };
+		AF11C58E1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C58C1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.m */; };
+		AF11C5921A35FA62000FF44B /* UserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF11C5911A35FA62000FF44B /* UserDataManager.m */; };
 		AF5FFF6A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m */; };
 		AF5FFF6B1A245E6F00E2A08F /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4C1A245E6F00E2A08F /* NSData+ImageContentType.m */; };
 		AF5FFF6C1A245E6F00E2A08F /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FFF4E1A245E6F00E2A08F /* SDImageCache.m */; };
@@ -114,6 +117,13 @@
 		AF11C53C1A34F3C9000FF44B /* DMSVGParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSVGParser.m; sourceTree = "<group>"; };
 		AF11C53D1A34F3C9000FF44B /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		AF11C53E1A34F3C9000FF44B /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		AF11C5881A35F23A000FF44B /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		AF11C5891A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		AF11C58A1A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		AF11C58B1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		AF11C58C1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		AF11C5901A35FA62000FF44B /* UserDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataManager.h; sourceTree = "<group>"; };
+		AF11C5911A35FA62000FF44B /* UserDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataManager.m; sourceTree = "<group>"; };
 		AF5FFF491A245E6F00E2A08F /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF5FFF4A1A245E6F00E2A08F /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF5FFF4B1A245E6F00E2A08F /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -305,6 +315,29 @@
 			path = DMSVGParser;
 			sourceTree = "<group>";
 		};
+		AF11C5871A35F23A000FF44B /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				AF11C5881A35F23A000FF44B /* SVPullToRefresh.h */,
+				AF11C5891A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.h */,
+				AF11C58A1A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.m */,
+				AF11C58B1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.h */,
+				AF11C58C1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
+		AF11C58F1A35F404000FF44B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AF11C5901A35FA62000FF44B /* UserDataManager.h */,
+				AF11C5911A35FA62000FF44B /* UserDataManager.m */,
+				AF9771131A1F7AF4008D13AA /* OAuthConstManager.h */,
+				AF9771141A1F7AF4008D13AA /* OAuthConstManager.m */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 		AF5FFF481A245E6F00E2A08F /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,8 +449,7 @@
 				AF9770B81A1F77CE008D13AA /* AppDelegate.h */,
 				AF9770B91A1F77CE008D13AA /* AppDelegate.m */,
 				AF7180CE1A25A0D200C7FFA1 /* Root */,
-				AF9771131A1F7AF4008D13AA /* OAuthConstManager.h */,
-				AF9771141A1F7AF4008D13AA /* OAuthConstManager.m */,
+				AF11C58F1A35F404000FF44B /* Manager */,
 				AF9770BB1A1F77CE008D13AA /* ViewController.h */,
 				AF9770BC1A1F77CE008D13AA /* ViewController.m */,
 				AFAB99A61A22A996000EE1B9 /* ContributionTableViewCell.h */,
@@ -500,6 +532,7 @@
 		AFAB99A91A22EE1C000EE1B9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AF11C5871A35F23A000FF44B /* SVPullToRefresh */,
 				AF11C53A1A34F3C9000FF44B /* DMSVGParser */,
 				AF7180BE1A24672F00C7FFA1 /* YLGIFImage */,
 				AF5FFF481A245E6F00E2A08F /* SDWebImage */,
@@ -641,7 +674,9 @@
 				AF11C5021A34D2FB000FF44B /* UIAlertView+AFNetworking.m in Sources */,
 				AF5FFF6C1A245E6F00E2A08F /* SDImageCache.m in Sources */,
 				AF11C5401A34F3C9000FF44B /* UIColor+Hex.m in Sources */,
+				AF11C5921A35FA62000FF44B /* UserDataManager.m in Sources */,
 				AF5FFF731A245E6F00E2A08F /* UIButton+WebCache.m in Sources */,
+				AF11C58D1A35F23A000FF44B /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				AF7180CA1A25A09B00C7FFA1 /* RootNavigationViewController.m in Sources */,
 				AF5FFF751A245E6F00E2A08F /* UIImage+MultiFormat.m in Sources */,
 				AF5FFF781A245E6F00E2A08F /* UIImageView+WebCache.m in Sources */,
@@ -650,6 +685,7 @@
 				AF11C5071A34D2FB000FF44B /* UIWebView+AFNetworking.m in Sources */,
 				AF5FFF6F1A245E6F00E2A08F /* SDWebImageDownloader.m in Sources */,
 				AF9771D61A1FCC4D008D13AA /* AFHTTPRequestOperationManager.m in Sources */,
+				AF11C58E1A35F23A000FF44B /* UIScrollView+SVPullToRefresh.m in Sources */,
 				AF9771D91A1FCC4D008D13AA /* AFSecurityPolicy.m in Sources */,
 				AF9770B71A1F77CE008D13AA /* main.m in Sources */,
 				AF5FFF761A245E6F00E2A08F /* UIImage+WebP.m in Sources */,
