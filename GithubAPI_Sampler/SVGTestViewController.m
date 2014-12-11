@@ -52,15 +52,6 @@
 }
 
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    //NSLog(@"dataDateArray = %@", dataDateArray);
-}
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

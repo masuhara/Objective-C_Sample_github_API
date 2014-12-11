@@ -13,7 +13,6 @@
 @interface DMSVGParser : NSObject
 
 
-
 + (UIImage *)getSVGImage:(NSData *)svgData;
 
 @end

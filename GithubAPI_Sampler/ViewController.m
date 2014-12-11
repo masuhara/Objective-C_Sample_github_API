@@ -57,7 +57,7 @@
     }];
     
     // iOS7でRefresh後にNavigationBarに隠れる問題の対処
-
+    
     self.navigationController.navigationBar.translucent = NO;
     self.tabBarController.tabBar.translucent = NO;
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]){
@@ -102,7 +102,7 @@
             feedTableView.hidden = YES;
             
             activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            activityIndicator.center = self.view.center;
+            activityIndicator.center = feedTableView.center;
             [self.view addSubview:activityIndicator];
             [activityIndicator startAnimating];
         }
@@ -124,7 +124,7 @@
 - (int)getFolloingInfo:(AFHTTPRequestOperationManager *)manager withUserName:(NSString *)userName
 {
     // 20 pages per Page
-    [manager GET:[NSString stringWithFormat:@"https://api.github.com/users/masuhara/following?page=%d&per_page=20", pageNumber]
+    [manager GET:[NSString stringWithFormat:@"https://api.github.com/users/masuhara/following?page=%d&per_page=100", pageNumber]
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
@@ -133,12 +133,10 @@
                                                                 error:nil];
              numberOfFollowings = (int)array.count;
              
-             for(int i = 0; i < pageNumber; i++){
-                 for (NSDictionary *dic in array) {
-                     [[UserDataManager sharedManager].userNameArray addObject:[dic valueForKey:@"login"]];
-                     [[UserDataManager sharedManager].profileImageArray addObject:[dic valueForKey:@"avatar_url"]];
-                     [[UserDataManager sharedManager].contributionArray addObject:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", [dic valueForKey:@"login"]]];
-                 }
+             for (NSDictionary *dic in array) {
+                 [[UserDataManager sharedManager].userNameArray addObject:[dic valueForKey:@"login"]];
+                 [[UserDataManager sharedManager].profileImageArray addObject:[dic valueForKey:@"avatar_url"]];
+                 [[UserDataManager sharedManager].contributionArray addObject:[NSString stringWithFormat:@"https://github.com/users/%@/contributions", [dic valueForKey:@"login"]]];
              }
              
              
@@ -147,9 +145,9 @@
              
              // Renew UI on main Thread
              /*
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [feedTableView reloadData];
-             });
+              dispatch_async(dispatch_get_main_queue(), ^{
+              [feedTableView reloadData];
+              });
               */
              
          }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -241,9 +239,9 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     contributionView.image = nil;
     dispatch_async(q_global, ^{
-        /*
-        UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserDataManager sharedManager].contributionArray[indexPath.row]]]];
-         */
+        
+         UIImage *image = [DMSVGParser getSVGImage:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserDataManager sharedManager].contributionArray[indexPath.row]]]];
+         /*
         
         __block UIImage *image = nil;
         
@@ -251,8 +249,7 @@
             image = [UserDataManager sharedManager].contributionArray[indexPath.row];
             NSLog(@"image = %@", image);
         }
-
-        
+          */
         
         dispatch_async(q_main, ^{
             // Fade Animation
@@ -332,10 +329,10 @@
 
 - (void)insertRowAtBottom {
     
-    int64_t delayInSeconds = 2.0;
+    int64_t delayInSeconds = 0.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-
+        
         //UpDate
         pageNumber++;
         [self loadData:YES];
