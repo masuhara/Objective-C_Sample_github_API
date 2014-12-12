@@ -124,7 +124,7 @@
 - (int)getFolloingInfo:(AFHTTPRequestOperationManager *)manager withUserName:(NSString *)userName
 {
     // 20 pages per Page
-    [manager GET:[NSString stringWithFormat:@"https://api.github.com/users/masuhara/following?page=%d&per_page=100", pageNumber]
+    [manager GET:[NSString stringWithFormat:@"https://api.github.com/users/masuhara/following?page=%d&per_page=20", pageNumber]
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
@@ -336,6 +336,7 @@
         //UpDate
         pageNumber++;
         [self loadData:YES];
+        [feedTableView reloadData];
         [feedTableView.infiniteScrollingView stopAnimating];
     });
 }
