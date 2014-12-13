@@ -13,6 +13,13 @@
 @interface DMSVGParser : NSObject
 
 
+
+@property(nonatomic)UIImageView *backgroundImageView;
+@property(nonatomic)NSMutableArray *contributions;
+@property(nonatomic)UIColor *contributionsColor;
+
+
++ (DMSVGParser *)sharedManager;
 + (UIImage *)getSVGImage:(NSData *)svgData;
 
 @end

@@ -18,6 +18,39 @@
 
 @implementation DMSVGParser
 
+static DMSVGParser *sharedData = nil;
+
+@synthesize backgroundImageView;
+@synthesize contributions;
+@synthesize contributionsColor;
+
++ (DMSVGParser *)sharedManager{
+    if (!sharedData) {
+        sharedData = [DMSVGParser new];
+    }
+    return sharedData;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        //Initialization
+        
+    }
+    return self;
+}
+
+
+- (NSMutableArray *)makeSVGImageViewWithBackgroundView:(UIImageView *)imageView
+{
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    
+    //TODO:Fix
+    
+    
+}
+
 
 + (UIImage *)getSVGImage:(NSData *)svgData{
     
